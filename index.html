@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Animation Showcase</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: teal;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+  }
+
+  /* Interactive Button */
+  .button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 10px;
+  }
+
+  .button:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+  }
+
+  /* Interactive Slider */
+  .slider {
+    width: 80%;
+    margin: 20px auto;
+    transform: rotate(180deg);
+  }
+
+  /* Interactive Toggle */
+  .toggle {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    position: relative;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 10px;
+  }
+
+  .toggle.active {
+    background-color: #27ae60;
+  }
+
+  .toggle-handle {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s;
+  }
+
+  .toggle.active .toggle-handle {
+    transform: translateX(30px);
+  }
+
+  /* Pseudo-Elements */
+  .pseudo-section {
+    position: relative;
+    width: 100%;
+    padding: 50px;
+    background-color: #444;
+    margin-top: 50px;
+  }
+
+  .pseudo-section::before {
+    content: 'Before';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #3498db;
+    font-weight: bold;
+  }
+
+  .pseudo-section::after {
+    content: 'After';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #e74c3c;
+    font-weight: bold;
+  }
+
+  /* 3D Component */
+  .cube-container {
+    perspective: 800px;
+    margin-top: 50px;
+  }
+
+  .cube {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCube 6s infinite linear;
+  }
+
+  .face {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0.9;
+  }
+
+  .face.front {
+    transform: translateZ(75px);
+  }
+
+  .face.back {
+    transform: rotateY(180deg) translateZ(75px);
+  }
+
+  .face.left {
+    transform: rotateY(-90deg) translateZ(75px);
+  }
+
+  .face.right {
+    transform: rotateY(90deg) translateZ(75px);
+  }
+
+  .face.top {
+    transform: rotateX(90deg) translateZ(75px);
+  }
+
+  .face.bottom {
+    transform: rotateX(-90deg) translateZ(75px);
+  }
+
+  @keyframes rotateCube {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    100% {
+      transform: rotateX(360deg) rotateY(360deg);
+    }
+  }
+
+  /* Custom Cursors */
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .cursor-zoom-in {
+    cursor: url('zoom-in.png'), auto;
+  }
+
+  .cursor-zoom-out {
+    cursor: url('zoom-out.png'), auto;
+  }
+
+  /* Visual Feedback */
+  .feedback-button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin: 0 10px;
+  }
+
+  .feedback-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.1);
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <button class="button cursor-pointer">Click Me</button>
+    <input class="slider cursor-zoom-in" type="range" min="0" max="100" value="50">
+    <div class="toggle cursor-zoom-out">
+      <div class="toggle-handle"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="pseudo-section"></div>
+  </div>
+  <div class="container">
+    <div class="cube-container">
+      <div class="cube">
+        <div class="face front"></div>
+        <div class="face back"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <button class="feedback-button cursor-pointer">Hover Me</button>
+    <button class="feedback-button cursor-zoom-in">Zoom In</button>
+    <button class="feedback-button cursor-zoom-out">Zoom Out</button>
+  </div>
+</body>
+</html>
